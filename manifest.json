@@ -1,0 +1,13 @@
+{
+  "name": "ThagaShield — Indian Scam Checker",
+  "short_name": "ThagaShield",
+  "description": "A free 1-minute diagnostic tool that spots Indian cyber scams and tells you exactly what to do next.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0E1417",
+  "theme_color": "#0E1417",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

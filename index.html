@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ThagaShield — Spot the scam in 60 seconds</title>
+<meta name="description" content="A free 1-minute diagnostic tool that tells you if that call, WhatsApp message or SMS is an Indian cyber scam — and exactly what to do next.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ThagaShield — Spot the scam in 60 seconds">
+<meta property="og:description" content="Free, 1-minute diagnostic for Indian cyber scams: Digital Arrest calls, task-job frauds, fake QR codes, loan-app harassment & more. No signup, no data stored.">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/thagashield/assets/og-image.png">
+<meta property="og:url" content="https://YOUR-USERNAME.github.io/thagashield/">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ThagaShield — Spot the scam in 60 seconds">
+<meta name="twitter:description" content="Free 1-minute diagnostic for Indian cyber scams. No signup, no data leaves your phone.">
+<meta name="twitter:image" content="https://YOUR-USERNAME.github.io/thagashield/assets/og-image.png">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#10171A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app" class="phone">
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark" aria-hidden="true">🛡️</span>
+      <span class="topbar__name">Thaga<em>Shield</em></span>
+    </div>
+    <button id="langToggle" class="lang-btn" type="button" aria-label="Toggle language">हिं</button>
+  </header>
+
+  <main class="views">
+
+    <!-- HOME -->
+    <section class="view view--active" data-view="home">
+      <div class="hero">
+        <p class="hero__eyebrow">Free to use, and nothing you type ever leaves your phone.</p>
+        <h1 class="hero__title">Is that message trying to rob you?</h1>
+        <p class="hero__sub">Answer a few quick questions about the call, text or chat you received. ThagaShield names the scam, explains the trick, and tells you exactly what to do — in under a minute.</p>
+        <button id="startBtn" class="btn btn--primary btn--block">Start the 1-minute check</button>
+        <p id="dodgedCount" class="hero__stat" aria-live="polite"></p>
+      </div>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>⚠️ Trending: fake "Digital Arrest" video calls</span>
+          <span>⚠️ Trending: Telegram task-job deposits</span>
+          <span>⚠️ Trending: reverse QR code payments</span>
+          <span>⚠️ Trending: fake electricity bill APKs</span>
+          <span>⚠️ Trending: fake "Digital Arrest" video calls</span>
+          <span>⚠️ Trending: Telegram task-job deposits</span>
+          <span>⚠️ Trending: reverse QR code payments</span>
+          <span>⚠️ Trending: fake electricity bill APKs</span>
+        </div>
+      </div>
+
+      <div class="homecard">
+        <h2 class="homecard__title">Know before you owe</h2>
+        <p>Real police never arrest you over video call. Real jobs never ask you to pay first. A QR code only ever sends money — never receives it. Three rules that stop most scams cold.</p>
+      </div>
+    </section>
+
+    <!-- DIAGNOSE -->
+    <section class="view" data-view="diagnose">
+      <div class="progress"><div id="progressFill" class="progress__fill"></div></div>
+
+      <div id="triageBox" class="triage"></div>
+      <div id="resultBox" class="resultwrap" hidden></div>
+
+      <div class="triage__nav">
+        <button id="backBtn" class="btn btn--text" type="button" hidden>Back</button>
+        <button id="nextBtn" class="btn btn--primary" type="button" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- DATABASE -->
+    <section class="view" data-view="database">
+      <h1 class="page__title">Scam database</h1>
+      <p class="page__sub">Browse every scam pattern in ThagaShield's engine.</p>
+      <input id="dbSearch" class="search" type="search" placeholder="Search by name or keyword…" aria-label="Search scams">
+      <div id="dbList" class="db-list"></div>
+    </section>
+
+  </main>
+
+  <nav class="tabbar">
+    <button class="tabbar__btn tabbar__btn--active" data-target="home" type="button">
+      <span class="tabbar__icon" aria-hidden="true">🏠</span><span>Home</span>
+    </button>
+    <button class="tabbar__btn" data-target="diagnose" type="button">
+      <span class="tabbar__icon" aria-hidden="true">🩺</span><span>Diagnose</span>
+    </button>
+    <button class="tabbar__btn" data-target="database" type="button">
+      <span class="tabbar__icon" aria-hidden="true">📚</span><span>Database</span>
+    </button>
+  </nav>
+
+  <footer class="footer">
+    <div class="footer__feedback">
+      <h2>Help us catch more scams</h2>
+      <p>Spotted a new scam script? Let us know so we can add it to the database.</p>
+      <a class="btn btn--ghost btn--block" href="mailto:suvadipchakraborty@gmail.com?subject=ScamSense%3A%20New%20Scam%20Submission">Submit a scam via email</a>
+    </div>
+    <p class="footer__credit">Built by Suva</p>
+  </footer>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
