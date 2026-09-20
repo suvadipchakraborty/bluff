@@ -58,18 +58,25 @@ To refresh the built-in copy occasionally, replace the two CSV strings in `js/sn
 │   ├── snapshot.js     # built-in copy of both sheets (offline fallback)
 │   ├── data.js         # CSV parser, tree builder, data-health audit, live/cache loading
 │   └── app.js          # routing + confirmation engine, results, database tab, English/हिंदी
-└── assets/             # favicon.svg, og-image.png
+└── assets/             # favicon.svg, og-image.png (link-preview card, 1200×630)
 ```
 
 ## Deploy: GitHub → Cloudflare Pages
 
 1. Drag the **contents** of this folder into your GitHub repo (`index.html`, `css/`, `js/`, `assets/`, `manifest.json`, `.nojekyll` at the repo root) and commit.
 2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**, pick the repo. Framework preset **None**, build command **empty**, output directory **`/`**. Every commit to `main` redeploys automatically.
-3. Once you know your live URL, replace `YOUR-DOMAIN` in the `og:image`, `og:url` and `twitter:image` tags in `index.html` (WhatsApp and Twitter need absolute URLs).
+
+## Link previews (WhatsApp, Instagram DMs, Facebook, LinkedIn, X, Telegram)
+
+Pasting the link shows a large 1200×630 card (`assets/og-image.png`) with the title and description from the `og:` / `twitter:` tags in `index.html`.
+
+- These platforms need **absolute** URLs and don't run JavaScript, so the address is written directly into the tags in `index.html` (`canonical`, `og:url`, `og:image`, `og:image:secure_url`, `twitter:image`) as `https://thaga-shield.suvadipchakraborty.workers.dev`. **If you move to a custom domain, replace it in those five tags.**
+- **Refreshing a cached preview:** WhatsApp and others cache per link. After changing the image or text, share the link with a new query string (e.g. `https://your-site/?v=2`), or use the Facebook Sharing Debugger / LinkedIn Post Inspector to re-scrape.
+- To change the card, replace `assets/og-image.png` with a new 1200×630 image, ideally under 300 KB (WhatsApp skips larger images).
 
 ## Features carried over from v1
 
-Golden Hour panel (now with a one-tap **Call 1930**), copy-able block-and-report message, Web Share of the diagnosis, on-device "scams dodged" counter, English / हिंदी toggle, installable PWA, searchable scam database (now with type filters and risk badges), social-preview tags.
+Golden Hour panel (now with a one-tap **Call 1930**), copy-able block-and-report message, Web Share of the diagnosis, on-device "scams dodged" counter, English / हिंदी toggle, installable PWA, searchable scam database (now with type filters and risk badges), a designed link-preview card for social sharing.
 
 ---
 
